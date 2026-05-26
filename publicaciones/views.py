@@ -18,7 +18,7 @@ class InicioView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["titulo"] = "Portal de publicaciones"
-        context["mensaje"] = "Bienvenido al portal de publicaciones." 
+        context["mensaje"] = "Bienvenido al portal de publicaciones. Acceda a las publicaciones seleccionandolas en el navbar." 
         return context
 
 # ---------------------------------------------------------------------------
