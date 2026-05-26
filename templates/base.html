@@ -1,20 +1,106 @@
-<!-- 
-    TODO: Completar el template base del portal.
+<!DOCTYPE html>
+<html lang="en">
 
-    Requisitos:
-    - Estructura HTML5 válida (<!DOCTYPE html>, <html>, <head>, <body>)
-    - En <title>: mostrar el nombre del sitio (podés hardcodearlo o usar una variable)
-    - Un <header> visible con el nombre del portal
-    - Una navegación (<nav>) con dos links:
-        - Inicio → {% url 'publicaciones:inicio' %}
-        - Publicaciones → {% url 'publicaciones:lista_publicaciones' %}
-    - Un bloque de contenido para que los templates hijos inserten su HTML:
-        {% block content %}{% endblock %}
-    - Un <footer> simple (puede ser solo un texto)
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Publicaciones</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --surface-color: #1e1e1e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-color: #64ffda;
+            --accent-hover: #1de9b6;
+            --border-color: #333333;
+        }
 
-    Pista para el bloque de contenido:
-        <main>
-            {% block content %}
-            {% endblock %}
-        </main>
--->
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--surface-color);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 0 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.2s ease-in-out;
+        }
+
+        nav a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        footer {
+            background-color: var(--surface-color);
+            color: var(--text-secondary);
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Blog</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'publicaciones:inicio' %}">Inicio</a></li>
+                <li><a href="{% url 'publicaciones:lista_publicaciones' %}">Publicaciones</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <footer>
+        <p>Todos los derechos reservados.</p>
+    </footer>
+
+</html>
