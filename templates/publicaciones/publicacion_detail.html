@@ -14,3 +14,13 @@
     Pista para el link de vuelta:
         <a href="{% url 'publicaciones:lista_publicaciones' %}">← Volver al listado</a>
 -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ object.titulo }}</h1>
+    <p><b>Autor: </b>{{ object.autor }}</p>
+    <p><b>Fecha: </b>{{ object.fecha_publicacion }}</p>
+    <p>{{ object.publicacion.contenido }}</p>
+
+    <a href="{% url 'publicaciones:lista_publicaciones' %}">Volver</a>
+{% endblock %}
